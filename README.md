@@ -8,185 +8,249 @@
 
 ## 📝 Description
 
-**Solana Alpha Radar** is a lightweight terminal-based on-chain intelligence tool built for the Solana ecosystem. It identifies high-momentum tokens by integrating Birdeye’s trending data with real-time pricing and basic security insights.
+**Solana Alpha Radar** is a lightweight terminal-based monitoring tool built for the Solana ecosystem. It identifies high-momentum tokens by integrating Birdeye’s trending data with real-time pricing and security insights.
 
-This project was developed as part of the **Birdeye Data 4-Week BIP Competition (Sprint 3)**.
-
-The system is designed as a **minimal alpha detection engine** that helps surface potential market opportunities earlier through structured data analysis.
+This project was developed as part of the Birdeye Data 4-Week BIP Competition (Sprint 3).
 
 ---
 
 ## 💡 Why This Matters
 
-In fast-moving on-chain ecosystems like Solana, opportunities appear and disappear quickly. Most traders lack a structured way to interpret raw token data.
+In fast-moving on-chain markets like Solana, traders often miss early opportunities due to lack of real-time insights.
 
-Solana Alpha Radar solves this by:
+Solana Alpha Radar bridges this gap by combining:
 
-- Aggregating trending token signals
-- Monitoring real-time price movement
-- Checking basic security risks
-- Providing fast interpretative output (alpha signals)
+* Trending momentum signals
+* Real-time price tracking
+* Basic security analysis
 
-This enables faster and more informed decision-making in volatile markets.
+This enables faster and more informed decision-making.
 
 ---
 
 ## ✨ Features
 
-- 🔥 Top 5 Trending Tracker — Fetches and monitors trending Solana tokens  
-- 💰 Real-Time Price Feed — Displays live token pricing data  
-- 🛡️ Security Analysis — Detects mint authority risks and ownership signals  
-- ⚠️ Risk Indicator System — Simple classification of token safety level  
-- 🧠 Basic Alpha Insight Layer — Converts raw data into readable signals  
-
----
-
-## 🧠 System Workflow
-
-1. Fetch trending tokens from Birdeye API  
-2. Retrieve token price and metadata  
-3. Perform security validation  
-4. Apply scoring logic (custom heuristic model)  
-5. Generate insight classification  
-6. Output structured alpha report in terminal  
+* 🔥 Top 5 Trending Tracker — Automatically fetches trending tokens
+* 💰 Real-Time Price — Displays latest market price
+* 🛡️ Security Check — Detects mintable tokens & ownership
+* ⚠️ Risk Indicator — Warns about potential risky tokens
+* 🧠 Rule-Based Scoring Engine — Converts raw on-chain data into structured alpha signals
 
 ---
 
 ## 🛠️ Tech Stack
 
-- Python 3.x  
-- Requests (HTTP client)  
-- python-dotenv (environment configuration)  
-- Birdeye API (Solana data provider)  
+* Python
+* Birdeye API
+* Requests
+* Python-dotenv
 
 ---
 
 ## 📊 Birdeye Endpoints Used
 
-- `/defi/token_trending` → Fetch trending tokens  
-- `/defi/token_security` → Security and mint analysis  
-- `/defi/token_overview` → Token metadata enrichment  
+* `/defi/token_trending` → Identify trending tokens with price metadata  
+* `/defi/token_security` → Analyze token risks  
 
 ---
 
 ## 📸 Example Output
 
-```text
-Checking: ZEREBRO
+![Terminal Output](./Screenshot.png)
 
-Price: $0.034120
+---
 
-🔥 ALPHA REPORT
-Token   : ZEREBRO
-Score   : 75 (🔥 HIGH MOMENTUM)
-Insight : Breakout Potential
-Security: Low Risk
+## 🧪 Sample Output
 
+```
+Memeriksa: swarms (...)
+Harga: $0.031650
+Mintable: Tidak
+Owner: 7gHk9sK2...
+```
 
-⚙️ Installation & Setup
-1. Clone Repository
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Clone Repository
+
+```bash
 git clone https://github.com/SuluhAuliaArifin/solana-alpha-radar.git
 cd solana-alpha-radar
-2. Create Virtual Environment (Recommended)
+```
+
+---
+
+### 2. Create Virtual Environment (Recommended)
+
+```bash
 python -m venv venv
+```
 
 Activate:
 
-Windows
+* Windows:
 
+```bash
 venv\Scripts\activate
+```
 
-Linux / Mac
+* Linux / Mac:
 
+```bash
 source venv/bin/activate
-3. Install Dependencies
+```
+
+---
+
+### 3. Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-If not available:
+Jika belum ada `requirements.txt`, install manual:
 
+```bash
 pip install requests python-dotenv
-4. Setup Environment Variables
+```
 
-Create .env file:
+---
 
+### 4. Setup Environment Variables
+
+Buat file `.env` di root project:
+
+📄 `.env`
+
+```
 BIRDEYE_API_KEY=your_api_key_here
-5. Run Application
+```
+
+---
+
+### 5. Run the Application
+
+```bash
 python main.py
-🔐 Security Notes
-Never commit .env to GitHub
-Use .gitignore for sensitive files
-Keep API keys private
-Respect API rate limits
-📂 Project Structure
+```
+
+---
+
+## 🔐 Notes
+
+* Pastikan API Key dari Birdeye aktif
+* Jangan commit file `.env` ke repository
+* Gunakan `.gitignore` untuk keamanan
+
+---
+
+## 📂 Project Structure (Recommended)
+
+```
 solana-alpha-radar/
-│
-├── main.py
-├── app/
+│── main.py
+│── app/
 │   ├── services/
 │   │   ├── scoring_service.py
 │   │   ├── insight_service.py
 │   └── utils/
 │       ├── formatter.py
 │
-├── .env
-├── requirements.txt
-├── README.md
-🚀 Future Improvements
-Web dashboard (Flask / FastAPI)
-Real-time WebSocket streaming
-Wallet flow tracking (whale detection)
-Machine learning-based scoring model
-Alert system for breakout tokens
-Historical backtesting engine
-⚠️ Limitations
-Dependent on external API availability
-Rule-based scoring (not AI/ML yet)
-Limited historical context
-Basic heuristic insights
-📌 Project Philosophy
+│── .env
+│── requirements.txt
+```
 
-"Turning raw on-chain data into actionable alpha signals with minimal complexity."
+---
 
-👤 Author
+## 🚀 Future Improvements
 
-Built as part of exploration into Solana ecosystem analytics and alpha detection systems.
+* Web dashboard (Flask / FastAPI)
+* Telegram / Discord bot integration
+* Historical tracking & analytics
+* Alert system for high-risk tokens
 
-📜 License
+---
 
-MIT License
+# Bahasa Indonesia
 
-Bahasa Indonesia
-📝 Deskripsi
+## 📝 Deskripsi
 
-Solana Alpha Radar adalah alat monitoring berbasis terminal untuk ekosistem Solana. Tool ini mendeteksi token dengan momentum tinggi menggunakan data trending dari Birdeye, harga real-time, dan analisis keamanan dasar.
+**Solana Alpha Radar** adalah alat monitoring berbasis terminal yang ringan untuk ekosistem Solana. Tool ini mengidentifikasi token dengan momentum tinggi dengan menggabungkan data trending dari Birdeye, harga real-time, dan analisis keamanan.
 
-Project ini dibuat sebagai bagian dari kompetisi Birdeye Data 4-Week BIP (Sprint 3).
+Project ini dibuat sebagai bagian dari kompetisi **Birdeye Data 4-Week BIP (Sprint 3)**.
 
-💡 Tujuan
+---
 
-Di ekosistem on-chain yang bergerak cepat, banyak peluang terlewat karena kurangnya sistem analisis data yang terstruktur.
+## 💡 Kenapa Ini Penting
 
-Solana Alpha Radar membantu dengan:
+Di pasar on-chain seperti Solana yang bergerak cepat, banyak trader kehilangan peluang karena kurangnya data real-time.
 
-Menggabungkan data token trending
-Analisis harga real-time
-Cek risiko keamanan
-Output insight sederhana
-✨ Fitur
-🔥 Tracker Token Trending
-💰 Harga Real-Time
-🛡️ Analisis Keamanan Token
-⚠️ Indikator Risiko
-🧠 Insight Alpha Sederhana
-⚙️ Cara Menjalankan
+Solana Alpha Radar membantu dengan menggabungkan:
+
+* Data token trending
+* Harga real-time
+* Analisis keamanan dasar
+
+Sehingga keputusan trading bisa lebih cepat dan tepat.
+
+---
+
+## ✨ Fitur
+
+* 🔥 Tracker Top 5 Trending
+* 💰 Harga Real-Time
+* 🛡️ Cek Keamanan Token
+* ⚠️ Indikator Risiko
+
+---
+
+## ⚙️ Cara Install & Jalankan
+
+### 1. Clone Repo
+
+```bash
 git clone https://github.com/SuluhAuliaArifin/solana-alpha-radar.git
 cd solana-alpha-radar
+```
+
+### 2. Install Dependency
+
+```bash
 pip install -r requirements.txt
+```
+
+### 3. Setup API Key
+
+Buat file `.env`:
+
+```
+BIRDEYE_API_KEY=your_api_key_here
+```
+
+### 4. Jalankan
+
+```bash
 python main.py
-🔐 Catatan Penting
-Jangan upload .env
-Gunakan .gitignore
-Pastikan API key aktif
-📜 License
+```
+
+---
+
+## 🔐 Catatan
+
+* Jangan upload `.env` ke GitHub
+* Gunakan `.gitignore`
+* Pastikan API aktif
+
+---
+
+## 🤝 Contributing
+
+Pull request sangat terbuka. Silakan fork dan kembangkan 🚀
+
+---
+
+## 📜 License
 
 MIT License
