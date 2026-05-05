@@ -50,7 +50,7 @@ This enables faster and more informed decision-making.
 
 ### 📸 Example Output
 
-![Terminal Output](screenshot.png)
+![Terminal Output](/screenshot.png)
 
 ---
 
