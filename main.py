@@ -3,9 +3,10 @@ import os
 import time
 from dotenv import load_dotenv
 
+# Load environment variables from .env file
 load_dotenv()
 
-# Ganti dengan API Key baru kamu
+# Get your API Key from the environment variable
 API_KEY = os.getenv("BIRDEYE_API_KEY") 
 BASE_URL = "https://public-api.birdeye.so"
 
@@ -16,7 +17,7 @@ headers = {
 }
 
 def get_trending_tokens():
-    print("--- Mengambil Daftar Token Trending ---")
+    print("--- Fetching Trending Token List ---")
     url = f"{BASE_URL}/defi/token_trending?sort_by=rank&sort_type=asc"
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
@@ -33,32 +34,32 @@ def check_security(address):
 def main():
     tokens = get_trending_tokens()
     
-    # Ambil 5 token teratas untuk dicek
+    # Process the top 5 trending tokens
     for token in tokens[:5]:
         name = token.get('symbol')
         address = token.get('address')
         price = token.get('price')
         
-        print(f"\nMemeriksa: {name} ({address})")
-        print(f"Harga: ${price:.6f}")
+        print(f"\nChecking: {name} ({address})")
+        print(f"Price: ${price:.6f}")
         
-        # Cek Keamanan
+        # Security Check
         security = check_security(address)
         if security:
-            # Contoh indikator keamanan: rugpull avoidance
-            is_mintable = "Ya" if security.get('is_mintable') else "Tidak"
+            # Security indicator: Rugpull avoidance
+            is_mintable = "Yes" if security.get('is_mintable') else "No"
             owner = security.get('owner', 'Unknown')
             print(f"Mintable: {is_mintable}")
             print(f"Owner: {owner[:10]}...")
         
-        # Delay kecil agar tidak terkena rate limit dan pelan-pelan hit API calls
+        # Small delay to respect rate limits and accumulate API calls
         time.sleep(1)
 
 if __name__ == "__main__":
-    # Jalankan loop ini beberapa kali saat kamu testing 
-    # untuk mencapai syarat 50 API Calls
+    # Loop 10 times during testing to reach the 50 API Calls requirement
+    # (1 trending call + 5 security calls) * 10 iterations = 60 calls total
     for i in range(10): 
-        print(f"\n=== Running ke-{i+1} ===")
+        print(f"\n=== Execution Run #{i+1} ===")
         main()
-        print("Menunggu 30 detik untuk update berikutnya...")
+        print("Waiting 30 seconds for the next update...")
         time.sleep(30)
